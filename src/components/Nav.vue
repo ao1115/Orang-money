@@ -13,6 +13,9 @@
 </template>
 
 <script>
+import x from '@/assets/icons/money.svg';
+console.log(x)
+
 export default {
     setup () {
         
