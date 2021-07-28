@@ -2,6 +2,7 @@ import Money from '@/views/Money.vue';
 <template>
     <div>
         Money
+        <Nav/>
     </div>
 </template>
 

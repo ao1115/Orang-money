@@ -2,6 +2,7 @@ import Statistics from '@/views/Statistics.vue';
 <template>
     <div>
         Statistics
+        <Nav/>
     </div>
 </template>
 

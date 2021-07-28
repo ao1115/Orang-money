@@ -3,11 +3,14 @@ import Labels from '@/views/Labels.vue';
 <template>
     <div>
         Labels
+        <Nav/>
     </div>
 </template>
 
 <script>
+import Nav from '@/components/Nav.vue'
 export default {
+  components: { Nav },
     setup () {
         
 
