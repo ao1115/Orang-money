@@ -1,16 +1,14 @@
-import Money from '@/views/Money.vue';
-import Labels from '@/views/Labels.vue';
+
 <template>
-    <div>
-        Labels
-        <Nav/>
-    </div>
+    <Layout>
+        <p>标签</p>
+    </Layout>
 </template>
 
 <script>
-import Nav from '@/components/Nav.vue'
+
 export default {
-  components: { Nav },
+
     setup () {
         
 

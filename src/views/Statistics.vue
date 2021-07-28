@@ -1,9 +1,8 @@
-import Statistics from '@/views/Statistics.vue';
+
 <template>
-    <div>
-        Statistics
-        <Nav/>
-    </div>
+    <Layout>
+        <p>统计</p>
+    </Layout>
 </template>
 
 <script>

@@ -1,13 +1,14 @@
-import Money from '@/views/Money.vue';
+
 <template>
-    <div>
-        Money
-        <Nav/>
-    </div>
+    <Layout>
+        <p>记账</p>
+    </Layout>
 </template>
 
 <script>
+
 export default {
+
     setup () {
         
 
