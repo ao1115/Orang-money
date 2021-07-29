@@ -16,7 +16,9 @@
   import {Component, Prop} from 'vue-property-decorator';
   @Component
   export default class Types extends Vue {
+    //data直接写
     type = '-'; // '-'表示支出，'+'表示收入
+
     selectType(type: string) {
       if (type !== '-' && type !== '+') {
         throw new Error('type is unknown');
@@ -24,7 +26,7 @@
       this.type = type;
     }
   }
-</script>>
+</script>
 
 <style lang="scss" scoped>
     .types{
