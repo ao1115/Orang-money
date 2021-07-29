@@ -1,7 +1,7 @@
 <template>
     <!-- 全局组件 -->
-     <div class="nav-wrapper">
-        <div class="content"> 
+     <div class="layout-wrapper">
+        <div class="content" :class=" classPrefix &&` ${classPrefix}-content`"> 
             <!--slot插槽，layout获取到其他页面的数据 -->
             <slot/> 
         </div>
@@ -12,17 +12,12 @@
 <script>
 
 export default {
-    setup () {
-        
-
-        return {}
-    }
+   props:['classPrefix'] //准备一个带有前缀的class名
 }
 </script>
 
 <style lang="scss" scoped>
-    .nav-wrapper{
-        border:1px solid  red;
+    .layout-wrapper{
         display: flex;
         flex-direction: column;
         height: 100vh;

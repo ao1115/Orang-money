@@ -9,18 +9,16 @@ import router from './router/index';
 
 <style lang="scss">
   @import "~@/assets/style/reset.scss";
-
-a{
-  color:inherit;
-  text-decoration: none;
-}
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+   @import "~@/assets/style/helper.scss";
+body{
+  font-size:16px;
+  font-family: $font-hei;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  color: #333;
+  line-height:1.5
 }
+
 
 #nav {
   padding: 30px;
