@@ -7,7 +7,7 @@ import Statistics from '@/views/Statistics.vue'
 import NotFound from '@/views/NotFound.vue'
 Vue.use(VueRouter)
 
-const routes: Array<RouteConfig> = [
+const routes= [
   {
     path: '/',
     redirect: '/money'  //根路径，进来时的页面
