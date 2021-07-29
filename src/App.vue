@@ -8,9 +8,11 @@ import router from './router/index';
 </template>
 
 <style lang="scss">
-*{
-  margin:0;padding:0;
-  box-sizing: border-box;
+  @import "~@/assets/style/reset.scss";
+
+a{
+  color:inherit;
+  text-decoration: none;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
