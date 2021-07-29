@@ -1,4 +1,4 @@
-import router from './router/index';
+
 <template>
   <div id="app">
       <!-- 这个是表示router引入的文件显示在这里 -->
