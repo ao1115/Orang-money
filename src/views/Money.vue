@@ -3,7 +3,7 @@
     <Layout class-prefix="layout">
         {{record}}
         <NumberPad @update:value = "onUpdateAmount"/>
-        <Types @update:value = "onUpdateType"/>
+        <Types :value.sync="record.type" />  <!--用.sync如果有初始值就用初始值，没有就导入外部数据-->
         <Notes @update:value = "onUpdateNotes"/>
         <!-- 用sync把外部的文件导入到内部数据中 -->
         <Tags @update:value ="onUpdateTags" :dataSource.sync="tags" />   
@@ -40,9 +40,6 @@ type Record={
          }
          onUpdateNotes(value:string){
              this.record.notes = value
-         }
-         onUpdateType(value:string){
-             this.record.type = value
          }
          onUpdateAmount(value:string){
              this.record.amount = parseFloat(value)
