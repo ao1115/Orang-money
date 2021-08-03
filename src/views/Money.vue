@@ -17,6 +17,7 @@ import Types from '@/components/money/Types.vue';
 import Notes from '@/components/money/Notes.vue';
 import Tags from '@/components/money/Tags.vue';
 import {Component,Watch} from 'vue-property-decorator';
+const model = require('@/models/model').model //ts引入js时用require
 
 //声明一个记录，用ts必须先声明类型
 type Record={
@@ -26,7 +27,7 @@ type Record={
     amount:number
     createdAt?:Date
 }
-const recordList: Record[] = JSON.parse(window.localStorage.getItem('recordList') || '[]');
+const recordList: Record[] = model.fetch()
   @Component({
        components :{ NumberPad, Types, Tags, Notes}
   })
@@ -68,4 +69,5 @@ const recordList: Record[] = JSON.parse(window.localStorage.getItem('recordList'
 <style lang="scss" scoped>
     @import "~@/assets/style/helper.scss";
     @import "~@/assets/style/reset.scss";
+
 </style>
