@@ -1,22 +1,66 @@
 
 <template>
-    <Layout>
-        <p>标签</p>
-    </Layout>
+  <Layout>
+    <ol class="tags">
+        <li class="tag">
+            <span >衣</span>
+            <Icon name = "right"/>
+        </li>
+        <li class="tag">
+            <span>食</span>
+            <Icon name = "right"/>
+        </li>
+        <li class="tag">
+            <span>住</span>
+            <Icon name = "right"/>
+        </li>
+        <li class="tag">
+            <span>行</span>
+            <Icon name = "right"/>
+        </li>
+    </ol>
+    <div class="createTag-wrapper">
+        <button class="createTag">
+            新增标签
+        </button>
+    </div>
+  </Layout>
 </template>
 
-<script>
-
-export default {
-
-    setup () {
-        
-
-        return {}
-    }
-}
+<script lang="ts">
+  
 </script>
 
 <style lang="scss" scoped>
-
+  .tags {
+    background: white;
+    font-size: 16px;
+    padding-left: 16px;
+    > .tag {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #e6e6e6;
+      svg {
+        width: 18px;
+        height: 18px;
+        color: red;
+        margin-right: 16px;
+      }
+    }
+  }
+  .createTag {
+    background: #767676;
+    color: white;
+    border-radius: 4px;
+    border: none;
+    height: 40px;
+    padding: 0 16px;
+    &-wrapper {
+      text-align: center;
+      padding: 16px;
+      margin-top: 44-16px;
+    }
+  }
 </style>
