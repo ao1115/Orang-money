@@ -1,8 +1,8 @@
 
 <template>
     <Layout class-prefix="layout">
-        {{record}}
-        <NumberPad @update:value = "onUpdateAmount"/>
+        {{recordList}}
+        <NumberPad @submit = "saveRecord" @update:value = "onUpdateAmount"/>
         <Types :value.sync="record.type" />  <!--用.sync如果有初始值就用初始值，没有就导入外部数据-->
         <Notes @update:value = "onUpdateNotes"/>
         <!-- 用sync把外部的文件导入到内部数据中 -->
@@ -16,7 +16,7 @@ import NumberPad from '@/components/money/NumberPad.vue';
 import Types from '@/components/money/Types.vue';
 import Notes from '@/components/money/Notes.vue';
 import Tags from '@/components/money/Tags.vue';
-import {Component} from 'vue-property-decorator';
+import {Component,Watch} from 'vue-property-decorator';
 
 //声明一个记录，用ts必须先声明类型
 type Record={
@@ -24,9 +24,9 @@ type Record={
     notes:string,
     type:string,
     amount:number
-
+    createdAt?:Date
 }
-
+const recordList: Record[] = JSON.parse(window.localStorage.getItem('recordList') || '[]');
   @Component({
        components :{ NumberPad, Types, Tags, Notes}
   })
@@ -35,6 +35,7 @@ type Record={
         record:Record={
             tags:[],notes:'',type:'-', amount:0     //给个初始值  
             }
+        recordList: Record[] = recordList;
          onUpdateTags(value:string []){
              this.record.tags = value
          }
@@ -43,7 +44,17 @@ type Record={
          }
          onUpdateAmount(value:string){
              this.record.amount = parseFloat(value)
-         }  
+            
+         } 
+         saveRecord() {
+      const record2: Record = JSON.parse(JSON.stringify(this.record));
+      record2.createdAt = new Date();
+      this.recordList.push(record2);
+    }
+    @Watch('recordList')
+    onrecordListChange() {
+      window.localStorage.setItem('recordList', JSON.stringify(this.recordList));
+    }
         }
 </script>
 <style lang = "scss">
