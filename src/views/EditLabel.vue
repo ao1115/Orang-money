@@ -4,7 +4,7 @@
             <Icon name="left"/>
             <span>编辑</span>
         </div>
-        <Notes fieldName="标签" placeholder="请输入标签名"/>
+        <FormItem fieldName="标签" placeholder="请输入标签名"/>
     </Layout>    
 </template>
 
@@ -13,11 +13,11 @@ import Vue from 'vue';
 import Layout from '@/components/Layout.vue'
 import tagListModel from '@/models/recordListModel';
 import { Component } from 'vue-property-decorator';
-import Notes from '@/components/money/Notes.vue';
+import FormItem from '@/components/money/FormItem.vue';
 import { component } from 'vue/types/umd';
 
  @Component({
-     components: {Notes }
+     components: {FormItem }
  })
    export default class Labels extends Vue{
        tag: { id: string; name: string; }|undefined;

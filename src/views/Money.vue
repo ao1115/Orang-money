@@ -4,7 +4,7 @@
         {{RecordItem}}
         <NumberPad @submit = "saveRecordItem" @update:value = "onUpdateAmount"/>
         <Types :value.sync="RecordItem.type" />  <!--用.sync如果有初始值就用初始值，没有就导入外部数据-->
-        <Notes fieldName="备注"  @update:value = "onUpdateNotes" placeholder="请输入备注"/>
+        <FormItem fieldName="备注"  @update:value = "onUpdateNotes" placeholder="请输入备注"/>
         <!-- 用sync把外部的文件导入到内部数据中 -->
         <Tags @update:value ="onUpdateTags" :dataSource.sync="tags" />   
     </Layout>
@@ -14,7 +14,7 @@
 import Vue from 'vue';
 import NumberPad from '@/components/money/NumberPad.vue';
 import Types from '@/components/money/Types.vue';
-import Notes from '@/components/money/Notes.vue';
+import FormItem from '@/components/money/FormItem.vue';
 import Tags from '@/components/money/Tags.vue';
 import {Component,Watch} from 'vue-property-decorator';
 import recordListModel from '@/models/recordListModel';
@@ -24,7 +24,7 @@ import tagListModel from '@/models/TagListModel';
 //声明一个记录，用ts必须先声明类型
 type RecordItem={
     tags:string[],
-    notes:string,
+    FormItem:string,
     type:string,
     amount:number
     createdAt?:Date
@@ -32,19 +32,19 @@ type RecordItem={
 const RecordItemList = recordListModel.fetch()
 const TagList = tagListModel.fetch()
   @Component({
-       components :{ NumberPad, Types, Tags, Notes}
+       components :{ NumberPad, Types, Tags, FormItem}
   })
         export default class Money extends Vue{
          tags =TagList;
         RecordItem:RecordItem={
-            tags:[],notes:'',type:'-', amount:0     //给个初始值  
+            tags:[],FormItem:'',type:'-', amount:0     //给个初始值  
             }
         RecordItemList: RecordItem[] = RecordItemList;
          onUpdateTags(value:string []){
              this.RecordItem.tags = value
          }
          onUpdateNotes(value:string){
-             this.RecordItem.notes = value
+             this.RecordItem.FormItem = value
          }
          onUpdateAmount(value:string){
              this.RecordItem.amount = parseFloat(value)
@@ -72,6 +72,7 @@ const TagList = tagListModel.fetch()
 <style lang="scss" scoped>
     @import "~@/assets/style/helper.scss";
     @import "~@/assets/style/reset.scss";
+
 
 
 
