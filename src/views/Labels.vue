@@ -4,7 +4,7 @@
         <router-link class ="tag" v-for="tag in tags" :key="tag.id"
             :to="`/labels/edit/${tag.id}`">
             <span>{{tag.name}}</span>
-            <Icon name = "right"/>
+            <Icon name="right"/>
         </router-link>
     </div>
     <div class="createTag-wrapper">
@@ -49,7 +49,7 @@
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px sdivid #e6e6e6;
-      svg {
+      svg.icon {
         width: 18px;
         height: 18px;
         color: red;

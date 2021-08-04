@@ -1,10 +1,10 @@
 <template>
     <div>
             <label for="" class="notes">
-                <span class="name">备注</span>
+                <span class="name">{{this.fieldName}}</span>
                 <input type="text"
                 v-model="value"
-                 placeholder="请输入备注">
+                 :placeholder=this.placeholder>
                  <!-- 
                      :value="value"
                      input = "value = $event.target.value"
@@ -25,7 +25,8 @@
       onValueChanged(value:string){
           this.$emit('update:value',value)
       }
-      
+      @Prop({required:true}) fieldName!:string //将留言改为动态的，required:true表示必填
+      @Prop() placeholder?:string
       
   }
 </script>
