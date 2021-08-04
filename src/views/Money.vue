@@ -72,9 +72,4 @@ const TagList = tagListModel.fetch()
 <style lang="scss" scoped>
     @import "~@/assets/style/helper.scss";
     @import "~@/assets/style/reset.scss";
-
-
-
-
-
 </style>
