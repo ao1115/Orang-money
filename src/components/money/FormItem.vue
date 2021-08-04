@@ -3,13 +3,15 @@
             <label for="" class="notes">
                 <span class="name">{{this.fieldName}}</span>
                 <input type="text"
-                v-model="value"
+                :value="value"
+                @input="onValueChanged($event.target.value)"
                  :placeholder=this.placeholder>
                  <!-- 
                      :value="value"
                      input = "value = $event.target.value"
                      如果有以上代码，可以简写成
                      v-model = "value"
+                     不会对value的值进行任何的读写，只是把value的值回传给value
                   -->
             </label>
         </div>
@@ -20,7 +22,7 @@
   import {Component, Prop, Watch} from 'vue-property-decorator';
   @Component
   export default class Notes extends Vue {
-      @Prop({default:''}) value!:string
+      @Prop({default:''}) readonly value!:string
       @Watch('value')
       onValueChanged(value:string){
           this.$emit('update:value',value)
