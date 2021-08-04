@@ -17,7 +17,9 @@ import Types from '@/components/money/Types.vue';
 import Notes from '@/components/money/Notes.vue';
 import Tags from '@/components/money/Tags.vue';
 import {Component,Watch} from 'vue-property-decorator';
-import model from '@/models/model';
+import recordListModel from '@/models/recordListModel';
+import tagListModel from '@/models/tagListModel';
+
 
 //声明一个记录，用ts必须先声明类型
 type RecordItem={
@@ -27,12 +29,13 @@ type RecordItem={
     amount:number
     createdAt?:Date
 }
-const RecordItemList = model.fetch()
+const RecordItemList = recordListModel.fetch()
+const TagList = tagListModel.fetch()
   @Component({
        components :{ NumberPad, Types, Tags, Notes}
   })
         export default class Money extends Vue{
-         tags =['衣','食','住','行'];
+         tags =TagList;
         RecordItem:RecordItem={
             tags:[],notes:'',type:'-', amount:0     //给个初始值  
             }
@@ -48,13 +51,13 @@ const RecordItemList = model.fetch()
             
          } 
          saveRecordItem() {
-      const RecordItem2: RecordItem = model.clone((this.RecordItem));
+      const RecordItem2: RecordItem = recordListModel.clone((this.RecordItem));
       RecordItem2.createdAt = new Date();
       this.RecordItemList.push(RecordItem2);
     }
     @Watch('RecordItemList')
     onRecordItemListChange() {
-      model.save((this.RecordItemList));
+      recordListModel.save((this.RecordItemList));
     }
         }
 </script>
@@ -69,6 +72,8 @@ const RecordItemList = model.fetch()
 <style lang="scss" scoped>
     @import "~@/assets/style/helper.scss";
     @import "~@/assets/style/reset.scss";
+
+
 
 
 </style>

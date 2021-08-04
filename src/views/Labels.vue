@@ -18,9 +18,13 @@
             <span>行</span>
             <Icon name = "right"/>
         </li>
+        <li v-for="tag in tags" :key="tag">
+            <span>{{tag}}</span>
+            <Icon name = "right"/>
+        </li>
     </ol>
     <div class="createTag-wrapper">
-        <button class="createTag">
+        <button class="createTag" @click="createTag">
             新增标签
         </button>
     </div>
@@ -28,7 +32,25 @@
 </template>
 
 <script lang="ts">
-  
+  import Vue from 'vue';
+  import {Component, Prop} from 'vue-property-decorator';
+  import tagListModel from '@/models/tagListModel';
+  tagListModel.fetch()
+   @Component
+   export default class Labels extends Vue{
+        tags = tagListModel.data
+        createTag(){
+            const name = window.prompt('请输入标签名')
+            if(name){
+                const message = tagListModel.create(name)
+                if(message ==='duplicated'){
+                    window.alert('标签名重复')
+                }else if(message==='success'){
+                    window.alert('创建成功')
+                }    
+            }
+        }
+   }
 </script>
 
 <style lang="scss" scoped>
