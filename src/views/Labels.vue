@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-  import tagListModel from '@/models/tagListModel';
+  import tagListModel from '@/models/TagListModel';
   import Vue from 'vue';
   import {Component, Prop} from 'vue-property-decorator';
   

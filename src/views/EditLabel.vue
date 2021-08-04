@@ -7,7 +7,7 @@
 <script lang='ts'>
 import Vue from 'vue';
 import Layout from '@/components/Layout.vue'
-import tagListModel from '@/models/tagListModel';
+import tagListModel from '@/models/recordListModel';
 import { Component } from 'vue-property-decorator';
  @Component
    export default class Labels extends Vue{
@@ -16,7 +16,7 @@ import { Component } from 'vue-property-decorator';
       const id = this.$route.params.id;
       tagListModel.fetch();
       const tags = tagListModel.data;
-      const tag = tags.filter(t => t.id === id)[0];
+      const tag = tags.filter(tag => tag.id === id)[0];
       if (tag) {
         this.tag = tag;
       } else {
