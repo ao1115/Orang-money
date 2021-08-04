@@ -6,7 +6,6 @@ import Labels from '@/views/Labels.vue'
 import Statistics from '@/views/Statistics.vue'
 import EditLabel from '@/views/EditLabel.vue'
 import NotFound from '@/views/NotFound.vue'
-
 import { Component } from 'vue-property-decorator';
 Vue.use(VueRouter)
 
