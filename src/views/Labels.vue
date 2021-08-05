@@ -17,10 +17,11 @@
 </template>
 
 <script lang="ts">
-  import tagListModel from '@/models/TagListModel';
+
   import Button from '@/components/Button.vue'
   import Vue from 'vue';
   import {Component, Prop} from 'vue-property-decorator';
+  import tagListModel from '@/models/TagListModel';
 
   
   tagListModel.fetch()

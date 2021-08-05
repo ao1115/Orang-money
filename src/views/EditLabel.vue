@@ -6,7 +6,9 @@
             <span class="rightIcon"></span>
         </div>
         <div class="form-wrapper">
-            <FormItem  fieldName="标签" placeholder="请输入标签名"/>
+            <FormItem :value ="tag.name" 
+            @update:value = "updateTag"
+            fieldName="标签" placeholder="请输入标签名"/>
         </div>
         
         <div class="button-wrapper">
@@ -18,7 +20,7 @@
 <script lang='ts'>
 import Vue from 'vue';
 import Layout from '@/components/Layout.vue'
-import tagListModel from '@/models/recordListModel';
+import tagListModel from '@/models/TagListModel';
 import { Component } from 'vue-property-decorator';
 import FormItem from '@/components/money/FormItem.vue';
 import Button from '@/components/Button.vue';
@@ -27,7 +29,7 @@ import Button from '@/components/Button.vue';
      components: {FormItem , Layout ,Button}
  })
    export default class Labels extends Vue{
-       tag: { id: string; name: string; }|undefined;
+       tag?: { id: string; name: string; }|undefined;//声明tag
        created() {
       const id = this.$route.params.id;
       tagListModel.fetch();
@@ -38,6 +40,11 @@ import Button from '@/components/Button.vue';
       } else {
         this.$router.replace('/404');
       }
+    }
+    updateTag(name:string){
+        if(this.tag){
+            tagListModel.update(this.tag.id,name)
+        }
     }
 }
 </script>
@@ -51,9 +58,7 @@ import Button from '@/components/Button.vue';
     display: flex;
     align-items: center;
     justify-content: space-between;
-    > .title {
-        
-    }
+    
     > .leftIcon {
       width: 24px;
       height: 24px;
