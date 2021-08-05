@@ -21,7 +21,7 @@ type TagListModel = {  //声明变量的类型
   save:() =>void ;//(不返回东西);
 }
 
-interface Window{
+interface store{
   tagList: Tag[];
   createTag: (name: string) => void;
   removeTag: (id: string) => boolean;

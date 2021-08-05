@@ -17,6 +17,7 @@ import Types from '@/components/money/Types.vue';
 import FormItem from '@/components/money/FormItem.vue';
 import Tags from '@/components/money/Tags.vue';
 import {Component,Watch} from 'vue-property-decorator';
+import store from '@/store/index2';
 
 
 
@@ -29,13 +30,13 @@ type RecordItem={
     amount:number
     createdAt?:Date
 }
-const recordList = window.recordList
+const recordList = store.recordList
 
   @Component({
        components :{ NumberPad, Types, Tags, FormItem}
   })
         export default class Money extends Vue{
-         tags =window.tagList;
+         tags =store.tagList;
         RecordItem:RecordItem={
             tags:[],FormItem:'',type:'-', amount:0     //给个初始值  
             }
@@ -51,7 +52,7 @@ const recordList = window.recordList
             
          } 
          saveRecordItem() {
-         window.saveRecord(this.record)
+         store.saveRecord(this.record)
     }
    
         }
