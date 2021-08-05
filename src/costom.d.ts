@@ -23,5 +23,8 @@ type TagListModel = {  //声明变量的类型
 
 interface Window{
   tagList: Tag[];
-  createTag:(name:string) => void
+  createTag: (name: string) => void;
+  removeTag: (id: string) => boolean;
+  updateTag: (id: string, name: string) => 'success' | 'duplicated' | 'not found';
+  findTag:(id:string)=>Tag
 }

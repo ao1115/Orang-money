@@ -21,7 +21,6 @@
 <script lang='ts'>
 import Vue from 'vue';
 import Layout from '@/components/Layout.vue'
-import tagListModel from '@/models/TagListModel';
 import { Component } from 'vue-property-decorator';
 import FormItem from '@/components/money/FormItem.vue';
 import Button from '@/components/Button.vue';
@@ -34,9 +33,7 @@ import router from '../router/index';
        tag?: { id: string; name: string; }|undefined;//声明tag
        created() {
       const id = this.$route.params.id;
-      tagListModel.fetch();
-      const tags = tagListModel.data;
-      const tag = tags.filter(tag => tag.id === id)[0];
+      const tag = window.findTag(id); //也可以直接把上面的id写到这里
       if (tag) {
         this.tag = tag;
       } else {
@@ -45,12 +42,12 @@ import router from '../router/index';
     }
     update(name:string){
         if(this.tag){
-            tagListModel.update(this.tag.id,name)
+            window.updateTag(this.tag.id,name)
         }
     }
     remove(){
       if(this.tag){
-        if(tagListModel.remove(this.tag.id)){
+        if(window.removeTag(this.tag.id)){
           this.$router.back()
         }else{
           window.alert('删除失败')

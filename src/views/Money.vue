@@ -18,7 +18,7 @@ import FormItem from '@/components/money/FormItem.vue';
 import Tags from '@/components/money/Tags.vue';
 import {Component,Watch} from 'vue-property-decorator';
 import recordListModel from '@/models/recordListModel';
-import tagListModel from '@/models/TagListModel';
+
 
 
 //声明一个记录，用ts必须先声明类型
