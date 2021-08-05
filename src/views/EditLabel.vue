@@ -1,7 +1,8 @@
 <template>
     <Layout>
         <div class="navBar">
-            <Icon class="leftIcon" name="left"/>
+           <!-- 给svg加click事件，要在svg的组件里绑定  然后回传 -->
+            <Icon class="leftIcon" name="left" @click="goBack"/> 
             <span class="title">编辑标签</span>
             <span class="rightIcon"></span>
         </div>
@@ -24,6 +25,7 @@ import tagListModel from '@/models/TagListModel';
 import { Component } from 'vue-property-decorator';
 import FormItem from '@/components/money/FormItem.vue';
 import Button from '@/components/Button.vue';
+import router from '../router/index';
 
  @Component({
      components: {FormItem , Layout ,Button}
@@ -47,7 +49,10 @@ import Button from '@/components/Button.vue';
         }
     }
     remove(){
-        tagListModel.remove(this.tag.id,)
+        tagListModel.remove(this.tag.id)
+    }
+    goBack(){
+      this.$router.back();
     }
 }
 </script>
