@@ -2,6 +2,7 @@
 let id:number = parseInt(window.localStorage.getItem('_idMax')|| '0') || 0//防止每次刷新id都从0开始
 function CreateId() {
   id++
+  window.localStorage.setItem('_idMax',id.toString())
   return id
 }
 export default CreateId

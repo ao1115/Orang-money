@@ -29,17 +29,17 @@ type RecordItem={
     amount:number
     createdAt?:Date
 }
-const RecordItemList = recordListModel.fetch()
-const TagList = tagListModel.fetch()
+const recordList = recordListModel.fetch()
+
   @Component({
        components :{ NumberPad, Types, Tags, FormItem}
   })
         export default class Money extends Vue{
-         tags =TagList;
+         tags =window.tagList;
         RecordItem:RecordItem={
             tags:[],FormItem:'',type:'-', amount:0     //给个初始值  
             }
-        RecordItemList: RecordItem[] = RecordItemList;
+        recordList: RecordItem[] = recordList;
          onUpdateTags(value:string []){
              this.RecordItem.tags = value
          }
@@ -51,13 +51,11 @@ const TagList = tagListModel.fetch()
             
          } 
          saveRecordItem() {
-      const RecordItem2: RecordItem = recordListModel.clone((this.RecordItem));
-      RecordItem2.createdAt = new Date();
-      this.RecordItemList.push(RecordItem2);
+         recordListModel.create(this.record)
     }
-    @Watch('RecordItemList')
+    @Watch('recordList')
     onRecordItemListChange() {
-      recordListModel.save((this.RecordItemList));
+      recordListModel.save;
     }
         }
 </script>

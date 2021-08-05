@@ -8,3 +8,19 @@ type RecordItem={
   createdAt?:Date
 
 }
+type Tag = {
+  id: string;
+  name: string;
+}
+type TagListModel = {  //声明变量的类型
+  data: Tag[];
+  fetch: () => Tag[];
+  create: (name: string) => 'success' | 'duplicated'; //联合类型；
+  update:(id:string,name:string) =>'success' | 'duplicated' | 'not found';
+  remove: (id: string) => boolean;
+  save:() =>void ;//(不返回东西);
+}
+
+interface Window{
+  tagList:Tag[]
+}
