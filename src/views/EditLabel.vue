@@ -7,7 +7,7 @@
         </div>
         <div class="form-wrapper">
             <FormItem :value ="tag.name" 
-            @update:value = "updateTag"
+            @update:value = "update"
             fieldName="标签" placeholder="请输入标签名"/>
         </div>
         
@@ -41,10 +41,13 @@ import Button from '@/components/Button.vue';
         this.$router.replace('/404');
       }
     }
-    updateTag(name:string){
+    update(name:string){
         if(this.tag){
             tagListModel.update(this.tag.id,name)
         }
+    }
+    remove(){
+        tagListModel.remove(this.tag.id,)
     }
 }
 </script>
