@@ -17,7 +17,7 @@ import Types from '@/components/money/Types.vue';
 import FormItem from '@/components/money/FormItem.vue';
 import Tags from '@/components/money/Tags.vue';
 import {Component,Watch} from 'vue-property-decorator';
-import recordListModel from '@/models/recordListModel';
+
 
 
 
@@ -29,7 +29,7 @@ type RecordItem={
     amount:number
     createdAt?:Date
 }
-const recordList = recordListModel.fetch()
+const recordList = window.recordList
 
   @Component({
        components :{ NumberPad, Types, Tags, FormItem}
@@ -51,12 +51,9 @@ const recordList = recordListModel.fetch()
             
          } 
          saveRecordItem() {
-         recordListModel.create(this.record)
+         window.saveRecord(this.record)
     }
-    @Watch('recordList')
-    onRecordItemListChange() {
-      recordListModel.save;
-    }
+   
         }
 </script>
 <style lang = "scss">
