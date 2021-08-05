@@ -34,7 +34,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-, "src/models/model.ts"  ],
+, "src/models/model.ts", "src/lib/idCreator.js"  ],
   "exclude": [
     "node_modules"
   ]
