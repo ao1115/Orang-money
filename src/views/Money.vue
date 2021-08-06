@@ -17,7 +17,7 @@ import Types from '@/components/money/Types.vue';
 import FormItem from '@/components/money/FormItem.vue';
 import Tags from '@/components/money/Tags.vue';
 import {Component,Watch} from 'vue-property-decorator';
-import store from '@/store/index2';
+//import store from '@/store/index2';
 
 
 
@@ -30,17 +30,25 @@ type RecordItem={
     amount:number
     createdAt?:Date
 }
-const recordList = store.recordList
+
 
   @Component({
-       components :{ NumberPad, Types, Tags, FormItem}
+       components :{ NumberPad, Types, Tags, FormItem},
+       computed:{
+           recordList(){
+               return this.$store.state.recordList;
+           }
+       }
   })
         export default class Money extends Vue{
-         tags =store.tagList;
+         //tags =store.tagList;
         RecordItem:RecordItem={
             tags:[],FormItem:'',type:'-', amount:0     //给个初始值  
             }
-        recordList: RecordItem[] = recordList;
+
+        created(){
+            this.$store.commit('fetchRecords')
+        }
          
          onUpdateNotes(value:string){
              this.RecordItem.FormItem = value
@@ -50,7 +58,7 @@ const recordList = store.recordList
             
          } 
          saveRecordItem() {
-         store.saveRecord(this.record)
+         this.$store.commit('createRecord',this.RecordItem)
     }
    
         }
