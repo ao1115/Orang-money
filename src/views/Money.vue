@@ -6,7 +6,7 @@
         <Types :value.sync="RecordItem.type" />  <!--用.sync如果有初始值就用初始值，没有就导入外部数据-->
         <FormItem fieldName="备注"  @update:value = "onUpdateNotes" placeholder="请输入备注"/>
         <!-- 用sync把外部的文件导入到内部数据中 -->
-        <Tags  :dataSource="tags" />   
+        <Tags/>   
     </Layout>
 </template>
 
@@ -41,7 +41,7 @@ type RecordItem={
        }
   })
         export default class Money extends Vue{
-         //tags =store.tagList;
+        
         RecordItem:RecordItem={
             tags:[],FormItem:'',type:'-', amount:0     //给个初始值  
             }
@@ -59,6 +59,7 @@ type RecordItem={
          } 
          saveRecordItem() {
          this.$store.commit('createRecord',this.RecordItem)
+
     }
    
         }

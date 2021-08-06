@@ -1,22 +1,23 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import clone from '@/lib/clone';
+import createId from '@/lib/idCreator';
 Vue.use(Vuex)
 
 
-const localStorageKeyName = 'recordList';
 const store = new Vuex.Store({
   state: {
     recordList: [] as RecordItem[],
+    tagList: [] as Tag[],
   },
   mutations: {
-    
+    //record store
     fetchRecords(state,record) {
-      state.recordList = JSON.parse(window.localStorage.getItem(localStorageKeyName) || '[]') as RecordItem[];
+      state.recordList = JSON.parse(window.localStorage.getItem('recordList') || '[]') as RecordItem[];
       
     },
     saveRecords(state) {
-      window.localStorage.setItem(localStorageKeyName, JSON.stringify(state.recordList));
+      window.localStorage.setItem('recordList', JSON.stringify(state.recordList));
     },
     createRecord(state,record) {
       const record2: RecordItem = clone(record);
@@ -24,6 +25,26 @@ const store = new Vuex.Store({
       state.recordList.push(record2);
      store.commit('saveRecords')
     },
+    //tag store
+    
+  fetchTags(state) {
+    state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]');  
+  },
+  createTag(state,name: string) {
+    const names = state.tagList.map(item => item.name);
+    if (names.indexOf(name) >= 0) {
+      window.alert('标签名重复了');
+      return 'duplicated';
+    }
+    const id = createId().toString();
+    state.tagList.push({id, name: name});
+    store.commit('saveTags');
+    window.alert('添加成功');
+    return 'success';
+  },
+  saveTags(state) {
+    window.localStorage.setItem('tagList', JSON.stringify(state.tagList));
+  }
   },
   actions: {
   },
