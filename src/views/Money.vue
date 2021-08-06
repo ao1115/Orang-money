@@ -29,8 +29,8 @@ type RecordItem={
     tags:string[],
     FormItem:string,
     type:string,
-    amount:number
-    createdAt?:Date
+    amount:number,
+    createdAt?:string
 }
 
 
