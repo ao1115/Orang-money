@@ -1,7 +1,8 @@
 <template>
     <Layout>
         <Tabs class-prefix="type"  :dataSource="recordTypeList" :value.sync="xxx"/>
-        <Tabs class-prefix="interval"  :dataSource="intervalList" :value.sync="yyy"/>
+        <Tabs class-prefix="interval"  
+        :dataSource="intervalList" :value.sync="yyy" />
     </Layout>
 
     
@@ -38,5 +39,8 @@ export default class Statistics extends Vue {
             }
         }
     }
+   ::v-deep li.interval-tabs-item {
+    height: 48px;
+  }
 
 </style>
