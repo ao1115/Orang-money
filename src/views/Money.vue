@@ -3,7 +3,7 @@
     <Layout class-prefix="layout">
         {{RecordItem}}
         <NumberPad @submit = "saveRecordItem" @update:value = "onUpdateAmount"/>
-        <Types :value.sync="RecordItem.type" />  <!--用.sync如果有初始值就用初始值，没有就导入外部数据-->
+        <Tabs :dataSource = "recordTypeList" :value.sync="RecordItem.type" />  <!--用.sync如果有初始值就用初始值，没有就导入外部数据-->
         <FormItem fieldName="备注"  @update:value = "onUpdateNotes" placeholder="请输入备注"/>
         <!-- 用sync把外部的文件导入到内部数据中 -->
         <Tags/>   
@@ -17,6 +17,8 @@ import Types from '@/components/money/Types.vue';
 import FormItem from '@/components/money/FormItem.vue';
 import Tags from '@/components/money/Tags.vue';
 import {Component,Watch} from 'vue-property-decorator';
+import Tabs from '../components/Tabs.vue';
+import recordTypeList from '@/countents/recordTypeList'
 //import store from '@/store/index2';
 
 
@@ -33,7 +35,7 @@ type RecordItem={
 
 
   @Component({
-       components :{ NumberPad, Types, Tags, FormItem},
+       components :{ NumberPad, Tabs, Tags, FormItem},
     //    computed:{
     //        recordList(){
     //            return this.$store.state.recordList;
@@ -44,6 +46,7 @@ type RecordItem={
         get recordList() {
       return this.$store.state.recordList;
     }
+    recordTypeList = recordTypeList
         RecordItem:RecordItem={
             tags:[],FormItem:'',type:'-', amount:0     //给个初始值  
             }
@@ -77,4 +80,6 @@ type RecordItem={
 <style lang="scss" scoped>
     @import "~@/assets/style/helper.scss";
     @import "~@/assets/style/reset.scss";
+
+
 </style>
