@@ -23,10 +23,7 @@
   @Component
   export default class Notes extends Vue {
       @Prop({default:''}) readonly value!:string
-      @Watch('value')
-      onValueChanged(value:string){
-          this.$emit('update:value',value)
-      }
+      
       @Prop({required:true}) fieldName!:string //将留言改为动态的，required:true表示必填
       @Prop() placeholder?:string;
       

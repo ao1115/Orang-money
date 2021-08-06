@@ -5,11 +5,18 @@ import createId from '@/lib/idCreator';
 Vue.use(Vuex)
 
 
+type RootState={
+  recordList: RecordItem[],
+    tagList: Tag[],
+    currentTag:Tag[]
+}
+
 const store = new Vuex.Store({
   state: {
-    recordList: [] as RecordItem[],
-    tagList: [] as Tag[],
-  },
+    recordList: [],
+    tagList: [],
+    currentTag: undefined
+  } as unknown as RootState,
   mutations: {
     //record store
     fetchRecords(state,record) {

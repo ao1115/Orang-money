@@ -24,13 +24,16 @@
 
    @Component({
        components:{Button},
-       computed:{
-         tags(){
-           return this.$store.state.tagList
-         }
-       }
+      //  computed:{
+      //    tags(){
+      //      return this.$store.state.tagList
+      //    }
+      //  }
    })
    export default class Labels extends Vue{
+     get tags() {
+      return this.$store.state.tagList;
+    }
         beforeCreate(){
           this.$store.commit('fetchTag')
         }
