@@ -35,13 +35,13 @@
 
 <style lang="scss" scoped>
     .tabs{
-        background: #c4c4c4;
+        // background: #c4c4c4;
         display: flex;
         text-align:center;
         font-size:24px;
         > li{
             width: 50%;
-            height:64px;
+            height:56px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -54,7 +54,7 @@
                 left:0;
                 height:4px;
                 width:100%;
-                background: #333;
+                background: rgb(255, 166, 0);
             }
         }
         

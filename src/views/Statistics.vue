@@ -1,5 +1,6 @@
 <template>
   <Layout>
+    <Logo/>
     <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type"/>
     <ol v-if="groupedList.length>0">
       <li v-for="(group, index) in groupedList" :key="index">
@@ -16,7 +17,7 @@
       </li>
     </ol>
     <div v-else class="noResult">
-        目前没有相关记录
+        没有相关记录哦，开始记一笔吧~~
     </div>
   </Layout>
 </template>
@@ -28,9 +29,10 @@
   import dayjs from 'dayjs';
   import clone from '@/lib/clone';
   import FormItem from '@/components/money/FormItem.vue';
-
+  import Logo from '@/components/Logo.vue'
+  
   @Component({
-    components: {Tabs,FormItem},
+    components: {Tabs,FormItem,Logo},
   })
   export default class Statistics extends Vue {
     tagString(tags: Tag[]) {
@@ -76,7 +78,6 @@
       result.map(group => {
         group.total = group.items.reduce((sum, item) => {
             console.log('-----------------')
-          console.log(item.FormItem)
           return sum + item.amount;
         }, 0);
       });
@@ -97,9 +98,10 @@
     }
   ::v-deep {
     .type-tabs-item {
-      background: #C4C4C4;
+      background: white;
+      margin-top:64px;
       &.selected {
-        background: white;
+        background: rgb(255, 166, 0);
         &::after {
           display: none;
         }

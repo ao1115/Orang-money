@@ -33,7 +33,7 @@ body{
   }
 }
 #app{
-  max-width:500px;
+  max-width:480px;
   margin:0 auto;
 }
 </style>

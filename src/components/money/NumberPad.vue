@@ -98,7 +98,7 @@
             &.zero{
                 width:25*2%;
             }
-            $bg: #f2f2f2; //要声明在外面
+            $bg: #fdba6d; //要声明在外面
             &:nth-child(1){
                 background: $bg;
             }

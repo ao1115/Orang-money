@@ -1,10 +1,11 @@
 <template>
-  <Layout>
+  <Layout >
+    <Logo/>
     <div class="tags">
         <router-link class ="tag" v-for="tag in tags" :key="tag.id"
             :to="`/labels/edit/${tag.id}`">
             <span>{{tag.name}}</span>
-            <Icon name="right"/>
+            <p><Icon name="right"/></p>
         </router-link>
     </div>
     <div class="createTag-wrapper">
@@ -21,9 +22,10 @@
   import Button from '@/components/Button.vue'
   import Vue from 'vue';
   import {Component, Prop} from 'vue-property-decorator';
+  import Logo from '@/components/Logo.vue'
 
    @Component({
-       components:{Button},
+       components:{Button,Logo},
       //  computed:{
       //    tags(){
       //      return this.$store.state.tagList
@@ -55,22 +57,23 @@
     background: white;
     font-size: 16px;
     padding-left: 16px;
+    margin-top:48px;
     > .tag {
       min-height: 44px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px sdivid #e6e6e6;
-      svg.icon {
+      border-bottom: 1px solid #e6e6e6;
+      p {
         width: 18px;
         height: 18px;
         color: red;
-        margin-right: 16px;
+        margin-right: 24px;
       }
     }
   }
   .createTag {
-    background: #767676;
+    background: rgb(255, 166, 0);
     color: white;
     border-radius: 4px;
     border: none;

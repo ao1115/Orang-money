@@ -2,6 +2,7 @@
     <Layout>
         <div class="navBar">
            <!-- 给svg加click事件，要在svg的组件里绑定  然后回传 -->
+           <Logo/>
             <Icon class="leftIcon" name="left" @click="goBack"/> 
             <span class="title">编辑标签</span>
             <span class="rightIcon"></span>
@@ -24,10 +25,10 @@ import Layout from '@/components/Layout.vue'
 import { Component } from 'vue-property-decorator';
 import FormItem from '@/components/money/FormItem.vue';
 import Button from '@/components/Button.vue';
-
+import Logo from '@/components/Logo.vue'
 
  @Component({
-    components: {Button, FormItem,Layout},
+    components: {Button, FormItem,Layout,Logo},
   })
   export default class EditLabel extends Vue {
     get currentTag() {
@@ -61,6 +62,7 @@ import Button from '@/components/Button.vue';
 
 <style lang="scss" scoped>
     .navBar {
+    margin-top:64px;
     text-align: center;
     font-size: 16px;
     padding: 12px 16px;

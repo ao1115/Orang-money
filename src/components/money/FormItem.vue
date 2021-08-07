@@ -40,6 +40,7 @@
         font-size:14px;
         padding-left:16px;
         align-items: center;
+        color:rgb(255, 166, 0);
         .name{
             padding-right: 16px;
         }

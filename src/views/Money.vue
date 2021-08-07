@@ -5,7 +5,8 @@
         <Tabs :dataSource = "recordTypeList" :value.sync="RecordItem.type" />  <!--用.sync如果有初始值就用初始值，没有就导入外部数据-->
         <FormItem fieldName="备注"  @update:value = "onUpdateNotes" placeholder="请输入备注" :value="RecordItem.notes"/>
         <!-- 用sync把外部的文件导入到内部数据中 -->
-        <Tags @update:value="RecordItem.tags = $event"/>   
+        <Tags @update:value="RecordItem.tags = $event"/> 
+        <Logo/>  
     </Layout>
 </template>
 
@@ -16,7 +17,8 @@ import FormItem from '@/components/money/FormItem.vue';
 import Tags from '@/components/money/Tags.vue';
 import {Component,Watch} from 'vue-property-decorator';
 import Tabs from '../components/Tabs.vue';
-import recordTypeList from '@/countents/recordTypeList'
+import recordTypeList from '@/countents/recordTypeList';
+import Logo from '@/components/Logo.vue'
 //import store from '@/store/index2';
 
 
@@ -34,7 +36,7 @@ type RecordItem={
 
 
   @Component({
-       components :{ NumberPad, Tabs, Tags, FormItem},
+       components :{ NumberPad, Tabs, Tags, FormItem,Logo},
     //    computed:{
     //        recordList(){
     //            return this.$store.state.recordList;
@@ -81,6 +83,7 @@ type RecordItem={
 <style lang="scss" scoped>
     @import "~@/assets/style/helper.scss";
     @import "~@/assets/style/reset.scss";
+
 
 
 </style>

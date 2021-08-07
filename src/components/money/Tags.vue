@@ -66,7 +66,7 @@
             display: flex;
             flex-wrap: wrap;
             > li{
-                background: #d9d9d9;
+                background: rgb(255, 166, 0);
                 $h:24px;
                 height:$h;
                 line-height:$h;
@@ -75,7 +75,7 @@
                 margin-right:12px;
                 margin-top:4px;
                 &.selected{
-                    background: #999;
+                    background: rgb(255, 94, 0);
                 }
             }
         }
