@@ -87,13 +87,13 @@
             @extend %clearFix; //把所有选择器复制到clearFix
             > button{
                 width: 25%;
-                height: 64px;
+                height: 48px;
                 float:left;
                 background: transparent;
                 border:none;
             &.ok{
                 float:right;
-                height: 64*2px;
+                height: 48*2px;
             }
             &.zero{
                 width:25*2%;

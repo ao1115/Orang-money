@@ -7344,6 +7344,11 @@ node-addon-api@^1.7.1:
   resolved "https://registry.nlark.com/node-addon-api/download/node-addon-api-1.7.2.tgz#3df30b95720b53c24e59948b49532b662444f54d"
   integrity sha1-PfMLlXILU8JOWZSLSVMrZiRE9U0=
 
+node-bin-setup@^1.0.0:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/node-bin-setup/-/node-bin-setup-1.0.6.tgz#4b5c9bb937ece702d7069b36ca78af4684677528"
+  integrity sha512-uPIxXNis1CRbv1DwqAxkgBk5NFV3s7cMN/Gf556jSw6jBvV7ca4F9lRL/8cALcZecRibeqU+5dFYqFFmzv5a0Q==
+
 node-cache@^4.1.1:
   version "4.2.1"
   resolved "https://registry.npm.taobao.org/node-cache/download/node-cache-4.2.1.tgz#efd8474dee4edec4138cdded580f5516500f7334"
@@ -7420,6 +7425,13 @@ node-releases@^1.1.71:
   version "1.1.73"
   resolved "https://registry.nlark.com/node-releases/download/node-releases-1.1.73.tgz?cache=0&sync_timestamp=1623060295334&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fnode-releases%2Fdownload%2Fnode-releases-1.1.73.tgz#dd4e81ddd5277ff846b80b52bb40c49edf7a7b20"
   integrity sha1-3U6B3dUnf/hGuAtSu0DEnt96eyA=
+
+node@10.24.1:
+  version "10.24.1"
+  resolved "https://registry.yarnpkg.com/node/-/node-10.24.1.tgz#878b51e716097d996352395f4988ec6b4bb40ab1"
+  integrity sha512-3VQ/FYdesUorecUrJAB2ZxeE9E/3Lm1/g0A5Y3jdnDgu/nK9G7pFBgDUlrLkb9FKWPd4pa3ieOAjvlwLSa4F1w==
+  dependencies:
+    node-bin-setup "^1.0.0"
 
 nopt@^5.0.0:
   version "5.0.0"

@@ -1,12 +1,16 @@
 
 <template>
     <Layout class-prefix="layout">
-        <NumberPad @submit = "saveRecordItem" @update:value = "onUpdateAmount"/>
-        <Tabs :dataSource = "recordTypeList" :value.sync="RecordItem.type" />  <!--用.sync如果有初始值就用初始值，没有就导入外部数据-->
-        <FormItem fieldName="备注"  @update:value = "onUpdateNotes" placeholder="请输入备注" :value="RecordItem.notes"/>
-        <!-- 用sync把外部的文件导入到内部数据中 -->
+        <Logo/> 
         <Tags @update:value="RecordItem.tags = $event"/> 
-        <Logo/>  
+        <FormItem fieldName="备注"  @update:value = "onUpdateNotes" placeholder="请输入备注" :value="RecordItem.notes"/>
+        <Tabs :dataSource = "recordTypeList" :value.sync="RecordItem.type" />  <!--用.sync如果有初始值就用初始值，没有就导入外部数据-->
+        <NumberPad @submit = "saveRecordItem" @update:value = "onUpdateAmount"/>
+        
+        
+        <!-- 用sync把外部的文件导入到内部数据中 -->
+        
+         
     </Layout>
 </template>
 
@@ -76,7 +80,7 @@ type RecordItem={
 /* 写前缀的class名 */
     .layout-content{ 
     display:flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     }
 </style>
 
