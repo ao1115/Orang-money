@@ -66,6 +66,7 @@ type RecordItem={
                  return window.alert('请至少选择一个标签' ) 
              }
             this.$store.commit('createRecord',this.RecordItem)
+            window.alert('保存成功')
     }
 }
 </script>
