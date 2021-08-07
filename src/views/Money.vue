@@ -1,12 +1,11 @@
 
 <template>
     <Layout class-prefix="layout">
-        {{RecordItem}}
         <NumberPad @submit = "saveRecordItem" @update:value = "onUpdateAmount"/>
         <Tabs :dataSource = "recordTypeList" :value.sync="RecordItem.type" />  <!--用.sync如果有初始值就用初始值，没有就导入外部数据-->
         <FormItem fieldName="备注"  @update:value = "onUpdateNotes" placeholder="请输入备注"/>
         <!-- 用sync把外部的文件导入到内部数据中 -->
-        <Tags/>   
+        <Tags @update:value="record.tags = $event"/>   
     </Layout>
 </template>
 
@@ -26,7 +25,7 @@ import recordTypeList from '@/countents/recordTypeList'
 
 //声明一个记录，用ts必须先声明类型
 type RecordItem={
-    tags:string[],
+    tags:Tag[],
     FormItem:string,
     type:string,
     amount:number,
