@@ -10,7 +10,8 @@ Vue.use(Vuex)
 type RootState={
   recordList: RecordItem[],
     tagList: Tag[],
-    currentTag?:Tag
+    currentTag?: Tag,
+    createRecordError:null | Error
 }
 
 const store = new Vuex.Store({
@@ -18,6 +19,7 @@ const store = new Vuex.Store({
     recordList: [],
     tagList: [],
     currentTag: undefined,
+    createRecordError:null
   } as RootState,
   mutations: {
     //record store
@@ -28,17 +30,23 @@ const store = new Vuex.Store({
     saveRecords(state) {
       window.localStorage.setItem('recordList', JSON.stringify(state.recordList));
     },
-    createRecord(state,record) {
+    createRecord(state,record:RecordItem) {
       const record2: RecordItem = clone(record);
       record2.createdAt = new Date();
       state.recordList.push(record2);
-     store.commit('saveRecords')
+      store.commit('saveRecords')
     },
     
     //tag store
     
   fetchTags(state) {
-    state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]');  
+    state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]');
+      if (!state.tagList || state.tagList.length=== 0){
+        store.commit('createTag', '衣服')
+        store.commit('createTag', '食物')
+        store.commit('createTag','住宿')
+        store.commit('createTag','行为')
+    }
   },
   createTag(state,name: string) {
     const names = state.tagList.map(item => item.name);
@@ -49,7 +57,6 @@ const store = new Vuex.Store({
     const id = createId().toString();
     state.tagList.push({id, name: name});
     store.commit('saveTags');
-    window.alert('添加成功');
     return 'success';
   },
   saveTags(state) {

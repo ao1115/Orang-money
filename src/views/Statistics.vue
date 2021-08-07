@@ -9,7 +9,7 @@
               class="record"
           >
             <span>{{tagString(item.tags)}}</span>
-            <span class="notes">{{item.notes}}</span>
+            <span class="notes" >{{item.FormItem}}</span>
             <span>￥{{item.amount}} </span>
           </li>
         </ol>
@@ -27,8 +27,10 @@
   import  recordTypeList from '@/countents/recordTypeList'
   import dayjs from 'dayjs';
   import clone from '@/lib/clone';
+  import FormItem from '@/components/money/FormItem.vue';
+
   @Component({
-    components: {Tabs},
+    components: {Tabs,FormItem},
   })
   export default class Statistics extends Vue {
     tagString(tags: Tag[]) {
@@ -51,7 +53,7 @@
       }
     }
     get recordList() {
-      return (this.$store.state  ).recordList;
+      return (this.$store.state as RootState ).recordList;
     }
     get groupedList() {
       const {recordList} = this;
@@ -73,8 +75,8 @@
       }
       result.map(group => {
         group.total = group.items.reduce((sum, item) => {
-          console.log(sum);
-          console.log(item);
+            console.log('-----------------')
+          console.log(item.FormItem)
           return sum + item.amount;
         }, 0);
       });
@@ -91,7 +93,7 @@
 <style scoped lang="scss">
     .noResult{
         padding:16px;
-        text-align: center;
+        text-align: center ;
     }
   ::v-deep {
     .type-tabs-item {

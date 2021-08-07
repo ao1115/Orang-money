@@ -3,6 +3,7 @@
             <div class="new">
                 <button @click="create">新增按钮</button>
             </div>
+            
             <ul class="current">
                   <li v-for="tag in tagList" :key="tag.id"
           :class="{selected: selectedTags.indexOf(tag)>=0}"

@@ -22,7 +22,7 @@ new Vue({
 }).$mount('#app')
 
 window.onload = function () {
-  this.setTimeout(function () {
+  this.setTimeout (function () {
     window.scrollTo(0,200)
   },0)
 }

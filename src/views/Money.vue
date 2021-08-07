@@ -3,16 +3,15 @@
     <Layout class-prefix="layout">
         <NumberPad @submit = "saveRecordItem" @update:value = "onUpdateAmount"/>
         <Tabs :dataSource = "recordTypeList" :value.sync="RecordItem.type" />  <!--用.sync如果有初始值就用初始值，没有就导入外部数据-->
-        <FormItem fieldName="备注"  @update:value = "onUpdateNotes" placeholder="请输入备注"/>
+        <FormItem fieldName="备注"  @update:value = "onUpdateNotes" placeholder="请输入备注" :value="RecordItem.notes"/>
         <!-- 用sync把外部的文件导入到内部数据中 -->
-        <Tags @update:value="record.tags = $event"/>   
+        <Tags @update:value="RecordItem.tags = $event"/>   
     </Layout>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import NumberPad from '@/components/money/NumberPad.vue';
-import Types from '@/components/money/Types.vue';
 import FormItem from '@/components/money/FormItem.vue';
 import Tags from '@/components/money/Tags.vue';
 import {Component,Watch} from 'vue-property-decorator';
@@ -29,7 +28,8 @@ type RecordItem={
     FormItem:string,
     type:string,
     amount:number,
-    createdAt?:string
+    createdAt?:string,
+
 }
 
 
@@ -47,7 +47,7 @@ type RecordItem={
     }
     recordTypeList = recordTypeList
         RecordItem:RecordItem={
-            tags:[],FormItem:'',type:'-', amount:0     //给个初始值  
+            tags:[],FormItem:'',type:'-', amount:0    //给个初始值  
             }
 
         created(){
@@ -62,11 +62,12 @@ type RecordItem={
             
          } 
          saveRecordItem() {
-         this.$store.commit('createRecord',this.RecordItem)
-
+             if(!this.RecordItem.tags||this.RecordItem.tags.length===0){
+                 return window.alert('请至少选择一个标签' ) 
+             }
+            this.$store.commit('createRecord',this.RecordItem)
     }
-   
-        }
+}
 </script>
 <style lang = "scss">
 /* 写前缀的class名 */
